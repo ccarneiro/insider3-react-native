@@ -20,7 +20,7 @@ function MyLinks() {
         ]}
         keyExtractor={(item) => String(item.id)}
         renderItem={({ item }) => <ListItem data={item} />}
-        contentContainerStyle={{ paddingBottom: 20 }}
+        contentContainerStyle={{ paddingBottom: 22 }}
         showsVerticalScrollIndicator={false}
       />
     </Container>
