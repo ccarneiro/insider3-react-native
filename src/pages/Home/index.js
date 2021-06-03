@@ -26,6 +26,7 @@ import StatusBarPage from '../../components/StatusBarPage';
 import Menu from '../../components/Menu';
 import ModalLink from '../../components/ModalLink';
 import api from '../../services/api';
+import { saveLink } from '../../utils/storeLinks';
 
 function Home() {
   const [input, setInput] = useState('');
@@ -39,6 +40,7 @@ function Home() {
       const response = await api.post('shorten', {
         long_url: input,
       });
+      saveLink(response.data);
       setData(response.data);
       // console.log(response.data);
       setModalVisible(true);
