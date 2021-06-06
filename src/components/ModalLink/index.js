@@ -18,9 +18,12 @@ import {
   LongUrl,
   ShortLinkArea,
   ShortLinkUrl,
+  OpenLinkButton,
+  OpenLinkButtonText,
+  OpenLinkButtonContainer,
 } from './styles';
 
-function ModalLink({ onClose, data }) {
+function ModalLink({ onClose, data, onOpenLink }) {
   function copyLink() {
     Clipboard.setString(data?.link);
     alert('Link copiado com sucesso!');
@@ -77,6 +80,12 @@ function ModalLink({ onClose, data }) {
               <Feather name="copy" color="#FFF" size={30} />
             </TouchableOpacity>
           </ShortLinkArea>
+          <OpenLinkButtonContainer>
+            <OpenLinkButton onPress={() => onOpenLink && onOpenLink(data)}>
+              <Feather name="compass" size={24} color="#fff" />
+              <OpenLinkButtonText>Visualizar Link</OpenLinkButtonText>
+            </OpenLinkButton>
+          </OpenLinkButtonContainer>
         </LinkArea>
       </Container>
     </ModalContainer>

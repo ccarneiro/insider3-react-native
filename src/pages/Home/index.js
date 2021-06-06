@@ -51,7 +51,6 @@ function Home() {
       setInput('');
       setLoading(false);
     }
-    // setModalVisible(true);
   }
 
   return (

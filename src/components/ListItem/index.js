@@ -5,7 +5,7 @@ import { Feather } from '@expo/vector-icons';
 
 import { ContainerButton, Item, ActionContainer } from './styles';
 
-function ListItem({ data, selectedItem, deleteItem }) {
+function ListItem({ data, selectedItem, deleteItem, openLink }) {
   function RightActions() {
     return (
       <ActionContainer onPress={() => deleteItem && deleteItem(data.id)}>
@@ -14,9 +14,20 @@ function ListItem({ data, selectedItem, deleteItem }) {
     );
   }
 
+  function LeftActions() {
+    return (
+      <ActionContainer onPress={() => openLink && openLink(data)}>
+        <Feather name="compass" color="#fff" size={24} />
+      </ActionContainer>
+    );
+  }
+
   return (
     <View>
-      <Swipeable renderRightActions={RightActions}>
+      <Swipeable
+        renderRightActions={RightActions}
+        renderLeftActions={LeftActions}
+      >
         <ContainerButton
           activeOpacity={0.9}
           onPress={() => selectedItem && selectedItem(data)}

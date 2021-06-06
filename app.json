@@ -17,7 +17,12 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSFaceIDUsageDescription": {
+          "NSFaceIDUsageDescription": "APP_NAME needs to use Face ID / Touch ID to authenticate"
+        }
+      }
     },
     "android": {
       "adaptiveIcon": {

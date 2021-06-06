@@ -7,6 +7,7 @@ import Menu from '../../components/Menu';
 import StatusBarPage from '../../components/StatusBarPage';
 import ModalLink from '../../components/ModalLink';
 import { getLinksSave, deleteLink } from '../../utils/storeLinks';
+import ModalWebView from '../../components/ModalWebView';
 import {
   Container,
   Title,
@@ -19,6 +20,7 @@ function MyLinks() {
   const [links, setLinks] = useState([]);
   const [data, setData] = useState({});
   const [modalVisible, setModalVisible] = useState(false);
+  const [modalWebViewVisible, setModalWebViewVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const isFocused = useIsFocused();
 
@@ -50,6 +52,13 @@ function MyLinks() {
     setLinks(newLinks);
   }
 
+  async function handleOpenLink(item) {
+    console.log('OpenLink', item.link);
+    setData(item);
+    setModalVisible(false);
+    setModalWebViewVisible(true);
+  }
+
   return (
     <Container>
       <StatusBarPage backgroundColor="#132742" barStyle="light-content" />
@@ -76,6 +85,7 @@ function MyLinks() {
             data={item}
             selectedItem={handleItem}
             deleteItem={handleDelete}
+            openLink={handleOpenLink}
           />
         )}
         contentContainerStyle={{ paddingBottom: 22 }}
@@ -83,7 +93,18 @@ function MyLinks() {
       />
 
       <Modal visible={modalVisible} transparent animationType="slide">
-        <ModalLink onClose={() => setModalVisible(false)} data={data} />
+        <ModalLink
+          onClose={() => setModalVisible(false)}
+          data={data}
+          onOpenLink={handleOpenLink}
+        />
+      </Modal>
+
+      <Modal visible={modalWebViewVisible} transparent animationType="slide">
+        <ModalWebView
+          onClose={() => setModalWebViewVisible(false)}
+          uri={data.link}
+        />
       </Modal>
     </Container>
   );

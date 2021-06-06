@@ -51,3 +51,27 @@ export const ShortLinkUrl = styled.Text`
   color: #fff;
   font-size: 16px;
 `;
+
+export const OpenLinkButtonContainer = styled.View`
+  align-items: center;
+  justify-content: center;
+`;
+
+export const OpenLinkButton = styled.TouchableOpacity`
+  margin-top: 35px;
+  background-color: #1ccbae;
+  color: #fff;
+  border-radius: 7px;
+  height: 45px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0% 15px;
+`;
+
+export const OpenLinkButtonText = styled.Text`
+  color: #fff;
+  font-size: 17px;
+  font-weight: bold;
+  margin-left: 5px;
+`;
